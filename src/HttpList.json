@@ -1,0 +1,9 @@
+{
+    "OutPutFolder": "C:\\Data",
+    "Calls": [
+        {
+            "UrlRequest": "https://....",
+            "FilePath": "data1.json"
+        }
+    ]
+}
