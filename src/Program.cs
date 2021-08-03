@@ -60,14 +60,17 @@ namespace BatchHttpTools
                     HttpClient client = new HttpClient();
                     var response = await client.GetAsync(c.UrlRequest);
                     var filePath = Path.Combine( callsToDo.OutPutFolder, c.FilePath );
-                    using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
+                    using (var fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
                     {
+                        fs.SetLength(0);
                         await response.Content.CopyToAsync(fs);
                     }
+                    Console.WriteLine($"Saved {c.FilePath}");
                 }
                 catch(Exception ex){
                     Console.WriteLine(ex.Message);
                 }
+                
             }
 
         }
